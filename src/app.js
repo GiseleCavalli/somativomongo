@@ -16,10 +16,6 @@ app.use("/employee", employeeRouter);
 app.use("/reservation", reservationRouter);
 app.use("/room", roomRouter);
 
-app.get("/", (require, response, next) => {
-  response.json({ message: "Djamba's Hotel is online!" });
-});
-
 app.use((req, res, next) => {
   const erro = new Error('Não encontrado');
   erro.status = 404;
