@@ -2,6 +2,7 @@
 const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
+const urlMongo = "mongodb://localhost/somativomongo"
 
 app.use(express.urlencoded({extended: true,}));
 app.use(express.json());
@@ -31,6 +32,6 @@ app.use((error, req, res, next) => {
   });
 });
 
-mongoose.connect(`mongodb://localhost/somativomongo`).then(() => {
+mongoose.connect(urlMongo).then(() => {
   app.listen(3000);
 }).catch((err) => console.log(err));
