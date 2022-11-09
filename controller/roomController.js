@@ -27,8 +27,8 @@ const RoomController = {
 
     room.save((error, _) => {
       if (error) {
-        return response.status(204).send({
-          error: "Quarto não encontrado..",
+        return response.status(400).send({
+          error: "Erro ao criar quarto",
           message: error,
         });
       }
@@ -47,8 +47,8 @@ const RoomController = {
       response.status(200).json(room);
 
     } catch (err) {
-      response.status(404).json({ 
-        message: "Quarto não encontrado..",
+      response.status(400).json({ 
+        message: "Erro ao criar quarto",
         error: err,
       });
     }

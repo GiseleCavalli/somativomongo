@@ -58,6 +58,51 @@ const ReservationController = {
     }
   },
 
+  async getByClient(require, response, next) {
+    const client = require.params.client;
+    console.log(client)
+
+    try {
+      const reservation = await Reservation.findOne({ client: client });
+      response.status(200).json(reservation);
+    
+    } catch (err) {
+      response.status(404).json({ 
+        message: "Reserva não encontradaaaaaaaaaaaaaa..",
+        error: err, 
+      });
+    }
+  },
+
+  async getByEmployee(require, response, next) {
+    const employee = require.params.employee;
+
+    try {
+      const reservation = await Reservation.findOne({ employee: employee });
+      response.status(200).json(reservation);
+    
+    } catch (err) {
+      response.status(404).json({ 
+        message: "Reserva não encontrada..",
+        error: err, 
+      });
+    }
+  },
+  async getByRoom(require, response, next) {
+    const room = require.params.room;
+
+    try {
+      const reservation = await Reservation.findOne({ room: room });
+      response.status(200).json(reservation);
+    
+    } catch (err) {
+      response.status(404).json({ 
+        message: "Reserva não encontrada..",
+        error: err, 
+      });
+    }
+  },
+
   async update(require, response, next) {
     const id = require.params.id;
 

@@ -27,8 +27,8 @@ const ClientController = {
 
     client.save((error, _) => {
       if (error) {
-        return response.status(204).send({
-          error: "Cliente não encontrado..",
+        return response.status(400).send({
+          error: "Erro ao criar usuário",
           message: error,
         });
       }

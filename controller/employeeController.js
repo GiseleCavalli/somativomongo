@@ -24,8 +24,8 @@ const EmployeeController = {
 
     employee.save((error, _) => {
       if (error) {
-        return response.status(204).send({
-          error: "Funcionário não encontrado.",
+        return response.status(400).send({
+          error: "Erro ao criar funcionário.",
           message: error,
         });
       }
